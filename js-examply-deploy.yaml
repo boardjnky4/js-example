@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: js-example-deployment
+  namespace: js-example-ns
   labels:
     app: js-example
 spec:
