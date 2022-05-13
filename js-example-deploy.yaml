@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: js-example-deployment
+  namespace: js-example-ns
+  labels:
+    app: js-example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: js-example-app
+  template:
+    metadata:
+      labels:
+        app: js-example-app
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - arm64
+      containers:
+      - name: js-example
+        image: ghcr.io/boardjnky4/js-example:latest
+        ports:
+        - name: http
+          containerPort: 8080
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: image-pull-secret
+
