@@ -13,12 +13,12 @@ spec:
     metadata:
       labels:
         app: nginx
-    spec:
-      containers:
-      - name: js-example
-        image: ghcr.io/boardjnky4/js-example
-          imagePullPolicy: Always
-        ports:
-        - containerPort: 80
-      imagePullSecrets:
-      - name: github-registry
+  spec:
+    containers:
+    - name: js-example
+      image: ghcr.io/boardjnky4/js-example:latest
+        imagePullPolicy: Always
+      ports:
+      - containerPort: 80
+    imagePullSecrets:
+    - name: github-registry
