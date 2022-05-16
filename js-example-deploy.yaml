@@ -39,3 +39,5 @@ spec:
         - name: http
           containerPort: 80
         imagePullPolicy: Always
+      imagePullSecrets:
+        - name: image-pull-secret
